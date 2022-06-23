@@ -40,8 +40,17 @@ func words_test(pass string, file string) {
 	for fScanner.Scan() {
 		line := fScanner.Text()
 		if (len(line) >= 3 && strings.Contains(pass1, line)) {
-			fmt.Printf(YEL + "[-] Password contains dictionary words - "+RESET)
-			fmt.Printf("%s : %s\n", file, line)
+			var perc float64 = float64(len(line))/float64(len(pass1))*100.0
+			if (perc == 100.0) {
+				fmt.Printf(RED + "[!] Password is dictionary word - %.1f - ", perc)
+			} else if (perc >= 70.0) {
+				fmt.Printf(RED + "[!] Password contains dictionary words - %.1f - ", perc)
+			} else if (perc >= 35.0) {
+				fmt.Printf(YEL + "[-] Password contains dictionary words - %.1f - ", perc)
+			} else {
+				fmt.Printf(BLUE + "[~] Password contains dictionary words - %.1f - ", perc)
+			}
+			fmt.Printf(RESET + "%s : %s\n", file, line)
 			found = true
 		}
 	}

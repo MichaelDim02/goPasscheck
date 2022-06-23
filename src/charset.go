@@ -5,6 +5,23 @@ import (
 	"unicode"
 )
 
+func IsSymbol(r rune) bool {
+
+	if (r == '!' || r == '@' || r == '#' ||
+	    r == '$' || r == '%' || r == '^' ||
+	    r == '&' || r == '*' || r == '(' ||
+	    r == ')' || r == '-' || r == '{' ||
+	    r == '}' || r == '[' || r == ']' ||
+	    r == ':' || r == ';' || r == '"' ||
+	    r == '\''|| r == '<' || r == '>' ||
+	    r == '.' || r == '/' || r == '?' ||
+	    r == '~' || r == '`' || r == ' ') {
+	 	return true
+	}
+
+	return false
+}
+
 func charset_test(pass string) {
 
 	let := false
@@ -29,7 +46,7 @@ func charset_test(pass string) {
 			}
 		}
 
-		if (unicode.IsSymbol(rune(r))) {
+		if (IsSymbol(rune(r))) {
 			sym = true
 		}
 	}
