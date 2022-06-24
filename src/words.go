@@ -66,7 +66,7 @@ func words_test(pass string, file string) {
 		fmt.Printf("    contains multiple distinct dictionary words, or if the\n")
 		fmt.Printf("    words are a small part of the password\n");
 	} else {
-		fmt.Printf(GREEN + "[+] Password was not found in any files\n"+RESET)
+		fmt.Printf(GREEN + "[+] Password does not contain words from " + RESET +"%s\n", file)
 	}
 	
 	f.Close()

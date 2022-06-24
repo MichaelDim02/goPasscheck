@@ -88,4 +88,7 @@ func main() {
 
 	fmt.Printf("\nRecent years:\n")
 	years_test(pass)
+
+	fmt.Printf("\nCommon masks:\n")
+	mask_test(pass)
 }
