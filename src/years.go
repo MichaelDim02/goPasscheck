@@ -26,6 +26,6 @@ func years_test(pass string) {
 			fmt.Printf(RESET + "%s\n", i)
 		}
 	} else {
-		fmt.Printf(GREEN + "[~] Password does not contain a recent year\n" + RESET)
+		fmt.Printf(GREEN + "[+] Password does not contain a recent year\n" + RESET)
 	}
 }
