@@ -50,11 +50,11 @@ func words_test(pass string, file string) {
 			if (perc == 100.0) {
 				fmt.Printf(RED + "[!] Password is dictionary word        - %.1f%% - ", perc)
 			} else if (perc >= 70.0) {
-				fmt.Printf(RED + "[!] Password contains dictionary words - %.1f%% - ", perc)
+				fmt.Printf(RED + "[!] Password contains dictionary word - %.1f%% - ", perc)
 			} else if (perc >= 35.0) {
-				fmt.Printf(YEL + "[-] Password contains dictionary words - %.1f%% - ", perc)
+				fmt.Printf(YEL + "[-] Password contains dictionary word - %.1f%% - ", perc)
 			} else {
-				fmt.Printf(BLUE + "[~] Password contains dictionary words - %.1f%% - ", perc)
+				fmt.Printf(BLUE + "[~] Password contains dictionary word - %.1f%% - ", perc)
 			}
 			fmt.Printf(RESET + "%s : %s\n", file, line)
 			found = true
