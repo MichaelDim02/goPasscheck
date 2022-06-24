@@ -12,15 +12,20 @@ var BLUE string = "\033[0;34m"
 var GREEN string = "\033[0;32m"
 var RESET string = "\x1b[0m"
 
+func banner() {
+	fmt.Printf("goPasstest %s\n" +
+		   "'(O.O)' <(better safe than sorry)\n" +
+		   "by Michael Constantine Dimopoulos\n" +
+		   "https://mcdim.xyz <mk@mcdim.xyz>\n", version)
+}	
 
 func help(bin string) {
-	fmt.Printf("Passcheck %s\n", version);
-	fmt.Printf("goPasscheck is a smart password analysis tool\n");
-	fmt.Printf("	-p, password argument\n");
-	fmt.Printf("	-w, words file argument\n");
-	fmt.Printf("	-h, print this panel and exit\n");
-	fmt.Printf("	-v, print version and exit\n");
-	fmt.Printf("usage: %s [password] | -h | -v\n", bin);
+	banner()
+	fmt.Printf("	-p, password argument\n" +
+		   "	-w, words file argument\n" +
+		   "	-h, print this panel and exit\n" +
+		   "	-v, print version and exit\n" +
+		   "usage: %s [password] | -h | -v\n", bin);
 	os.Exit(0)
 }
 
@@ -53,8 +58,7 @@ func main() {
 				words = os.Args[i+1]
 			} else {
 				usage(bin)
-			}
-		}
+			} }
 
 		if (os.Args[i] == "-p" && len(os.Args) > i+1) {
 			if (len(os.Args) > i) {
@@ -69,8 +73,8 @@ func main() {
 		usage(bin)
 	}
 
-	fmt.Printf("Passcheck %s\n", version);
-	fmt.Printf("words: %s\n", words);
+	banner()
+	fmt.Printf("\nWords: %s\n", words);
 	fmt.Printf("Password: %s\n\n", pass);
 
 	length_test(pass);
