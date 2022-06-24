@@ -16,7 +16,7 @@ func banner() {
 	fmt.Printf("goPasstest %s\n" +
 		   "'(O.O)' <(better safe than sorry)\n" +
 		   "by Michael Constantine Dimopoulos\n" +
-		   "https://mcdim.xyz <mk@mcdim.xyz>\n", version)
+		   "https://mcdim.xyz  <mk@mcdim.xyz>\n", version)
 }	
 
 func help(bin string) {
