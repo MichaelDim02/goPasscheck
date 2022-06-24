@@ -8,6 +8,7 @@ var version string = "v0.1"
 
 var RED string = "\x1b[31m"
 var YEL string = "\u001b[33m"
+var BLUE string = "\033[0;34m"
 var GREEN string = "\033[0;32m"
 var RESET string = "\x1b[0m"
 
@@ -80,4 +81,7 @@ func main() {
 		fmt.Printf("\nWords:\n")
 		words_test(pass, words) // 0 = words file, 1 = password dictionary
 	}
+
+	fmt.Printf("\nRecent years:\n")
+	years_test(pass)
 }

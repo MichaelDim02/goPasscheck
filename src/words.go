@@ -7,7 +7,13 @@ import (
 	"os"
 )
 
+func get_per(a int, b int) float64 {
+
+	return float64(a)/float64(b)*100.0
+}
+
 func deleet(str1 string) string {
+
 	str2 := strings.ReplaceAll(str1, "3", "e")
 	str3 := strings.ReplaceAll(str2, "@", "a")
 	str4 := strings.ReplaceAll(str3, "1", "i")
@@ -40,15 +46,15 @@ func words_test(pass string, file string) {
 	for fScanner.Scan() {
 		line := fScanner.Text()
 		if (len(line) >= 3 && strings.Contains(pass1, line)) {
-			var perc float64 = float64(len(line))/float64(len(pass1))*100.0
+			perc := get_per(len(line), len(pass1))
 			if (perc == 100.0) {
-				fmt.Printf(RED + "[!] Password is dictionary word - %.1f - ", perc)
+				fmt.Printf(RED + "[!] Password is dictionary word - %.1f%% - ", perc)
 			} else if (perc >= 70.0) {
-				fmt.Printf(RED + "[!] Password contains dictionary words - %.1f - ", perc)
+				fmt.Printf(RED + "[!] Password contains dictionary words - %.1f%% - ", perc)
 			} else if (perc >= 35.0) {
-				fmt.Printf(YEL + "[-] Password contains dictionary words - %.1f - ", perc)
+				fmt.Printf(YEL + "[-] Password contains dictionary words - %.1f%% - ", perc)
 			} else {
-				fmt.Printf(BLUE + "[~] Password contains dictionary words - %.1f - ", perc)
+				fmt.Printf(BLUE + "[~] Password contains dictionary words - %.1f%% - ", perc)
 			}
 			fmt.Printf(RESET + "%s : %s\n", file, line)
 			found = true
