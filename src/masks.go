@@ -11,7 +11,7 @@ func must_match(regex string, pass string) bool {
 }
 
 
-func mask_test(pass string) {
+func mask_test(pass string) { // according to pipal
 
 	str := " Password matches common mask "
 	var found bool
@@ -63,5 +63,44 @@ func mask_test(pass string) {
 
 	if (!found) {
 		fmt.Printf(GREEN + "[+] Password does not match any common mask\n" + RESET)
+	}
+}
+
+func popular_characters_test(pass string) { //according to lykan
+
+	var found bool
+
+	if (must_match("^[^A-Za-z]*[Aa][^A-Za-z]*$", pass)) {
+		fmt.Printf(YEL + "[-] Passowrd's only letter is the most common letter in passwords\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[^A-Za-z]*[Ee][^A-Za-z]*$", pass)) {
+		fmt.Printf(YEL + "[-] Passowrd's only letter is the second most common letter in passwords\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[^0-9]*1[^0-9]*$", pass)) {
+		fmt.Printf(YEL + "[-] Passowrd's only number is the most common number in passwords\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[^0-9]*0[^0-9]*$", pass)) {
+		fmt.Printf(YEL + "[-] Passowrd's only number is the second most common number in passwords\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[A-Za-z0-9]*\\.[A-Za-z0-9]*$", pass)) {
+		fmt.Printf(YEL + "[-] Passowrd's only symbol is the most common symbol in passwords\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[A-Za-z0-9]*-[A-Za-z0-9]*$", pass)) {
+		fmt.Printf(YEL + "[-] Passowrd's only symbol is the second most common symbol in passwords\n" + RESET)
+		found = true
+	}
+
+	if (!found) {
+		fmt.Printf(GREEN + "[+] Password does not overuse popular characters\n" + RESET)
 	}
 }

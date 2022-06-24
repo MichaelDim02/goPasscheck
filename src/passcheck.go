@@ -91,4 +91,7 @@ func main() {
 
 	fmt.Printf("\nCommon masks:\n")
 	mask_test(pass)
+
+	fmt.Printf("\nPopular characters:\n")
+	popular_characters_test(pass)
 }
