@@ -83,8 +83,11 @@ func main() {
 
 	if (words != "") {
 		fmt.Printf("\nWords:\n")
-		words_test(pass, words) // 0 = words file, 1 = password dictionary
+		words_test(pass, words)
 	}
+
+	fmt.Printf("\nCracking wordlists:\n")
+	wordlist_test(pass, "commonpass.txt")
 
 	fmt.Printf("\nRecent years:\n")
 	years_test(pass)

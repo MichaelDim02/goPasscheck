@@ -51,8 +51,33 @@ func mask_test(pass string) { // according to pipal
 		found = true
 	}
 
+	if (must_match("^[A-Za-z]{1,}\\.[0-9]{1,}$", pass)) {
+		fmt.Printf(BLUE + "[~]" + str + "^letter{1,}\\.num{1,}$\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[0-9]{1,}\\.[A-Za-z]{1,}$", pass)) {
+		fmt.Printf(BLUE + "[~]" + str + "^num{1,}\\.char{1,}$\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[0-9]{1,}\\.[^A-Za-z0-9]{1,}$", pass)) {
+		fmt.Printf(BLUE + "[~]" + str + "^num{1,}\\.symbol{1,}$\n" + RESET)
+		found = true
+	}
+
+	if (must_match("^[^A-Za-z0-9]{1,}\\.[0-9]{1,}$", pass)) {
+		fmt.Printf(BLUE + "[~]" + str + "^num{1,}\\.symbol{1,}$\n" + RESET)
+		found = true
+	}
+
 	if (must_match("^[A-Za-z]{1,}123$", pass)) {
 		fmt.Printf(YEL + "[-]" + str + "^alpha{1,}123$\n" + RESET)
+		found = true
+	}
+
+	if (must_match("[A-Za-z]{1,}1$", pass)) {
+		fmt.Printf(BLUE + "[~]" + str + "*1$\n" + RESET)
 		found = true
 	}
 

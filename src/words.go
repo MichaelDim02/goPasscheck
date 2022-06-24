@@ -48,7 +48,7 @@ func words_test(pass string, file string) {
 		if (len(line) >= 3 && strings.Contains(pass1, line)) {
 			perc := get_per(len(line), len(pass1))
 			if (perc == 100.0) {
-				fmt.Printf(RED + "[!] Password is dictionary word - %.1f%% - ", perc)
+				fmt.Printf(RED + "[!] Password is dictionary word        - %.1f%% - ", perc)
 			} else if (perc >= 70.0) {
 				fmt.Printf(RED + "[!] Password contains dictionary words - %.1f%% - ", perc)
 			} else if (perc >= 35.0) {
