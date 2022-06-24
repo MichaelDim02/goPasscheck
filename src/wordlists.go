@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"strings"
 	"bufio"
 	"os"
+	"strings"
 )
 
 
@@ -24,21 +24,34 @@ func wordlist_test(pass string, file string) {
 	fScanner.Split(bufio.ScanLines)
 
 	var found bool
-	var i int
+	i := 1
 	for fScanner.Scan() {
 		line := fScanner.Text()
-		if (len(line) >= 3 && strings.Contains(pass1, line)) {
+		if (len(line) >= 3 && pass == line) {
 
-			fmt.Printf(RED + "\n[!!!] Password is cracking dictionary - ")
+			fmt.Printf(RED + "\n[!!!] Password is in cracking dictionary - ")
 
 			fmt.Printf(RESET + "%s:%d : %s\n\n", file,i, line)
 			found = true
-			i++
+		} else if (len(line) >= 3 && strings.Contains(pass1, line)) {
+			perc := get_per(len(line), len(pass1))
+			if (perc == 100.0) {
+				fmt.Printf(RED + "[!] Deleetified password is in cracking dictionary - %.1f%% - ", perc)
+			} else if (perc >= 70.0) {
+				fmt.Printf(RED + "[!] Deleetified password contains cracking dictionary password - %.1f%% - ", perc)
+			} else if (perc >= 35.0) {
+				fmt.Printf(YEL + "[-] Deleetified password contains cracking dictionary password - %.1f%% - ", perc)
+			} else {
+				fmt.Printf(BLUE + "[~] Deleetified password contains cracking dictionary password - %.1f%% - ", perc)
+			}
+			fmt.Printf(RESET + "%s : %s\n", file, line)
+			found = true
 		}
+		i++
 	}
 
 	if (!found) {
-		fmt.Printf(GREEN + "[+] Password is not in dictionary " + RESET +"%s\n", file)
+		fmt.Printf(GREEN + "[+] Password is not in cracking dictionary " + RESET +"%s\n", file)
 	}
 	
 	f.Close()
